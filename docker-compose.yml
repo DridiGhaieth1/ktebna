@@ -19,7 +19,7 @@ services:
     volumes:
      - ./project/:/var/www/project/
     ports:
-     - 8001:80 # Ports that are exposed, you can connect to port 8001 to port 80 of the container.
+     - 80:80 # Ports that are exposed, you can connect to port 8001 to port 80 of the container.
     networks:
      - symfony
 
