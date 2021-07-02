@@ -34,6 +34,17 @@ services:
     networks:
     - symfony
 
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: ktebna_phpmyadmin
+    restart: always
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_ABSOLUTE_URI=http://db.ktebna.tn/
+    networks:
+      - symfony
+
 volumes:
   symfony_db:
 
