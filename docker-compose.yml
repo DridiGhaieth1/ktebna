@@ -9,8 +9,18 @@ services:
      - DATABASE_URL=mysql://root:root@db:3306/project_db # Connection string for the database.
     volumes:
      - ./project/:/var/www/project/ # Location of the project for php-fpm. Note this should be the same for NGINX.
+    depends_on:
+      - composer_installation
     networks:
      - symfony # Docker containers (services) that need to connect to each other should be on the same network.
+
+  composer_installation:
+    image: composer
+    volumes:
+      - ./project/:/app
+    command: composer install --ignore-platform-reqs
+    networks:
+      - symfony
 
   nginx:
     build:
@@ -20,6 +30,8 @@ services:
      - ./project/:/var/www/project/
     ports:
      - 80:80 # Ports that are exposed, you can connect to port 8001 to port 80 of the container.
+    depends_on:
+      - fpm
     networks:
      - symfony
 
