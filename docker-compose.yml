@@ -4,7 +4,7 @@ services:
   fpm:
     build: # Info to build the Docker image
       context: . # Specify where the Dockerfile is located (e.g. in the root directory of the backend)
-      dockerfile: Dockerfile-php # Specify the name of the Dockerfile
+      dockerfile: ./docker/Dockerfile-php # Specify the name of the Dockerfile
     restart: unless-stopped
     environment: # You can use this section to set environment variables. But you can also use the .env file.
       - DATABASE_URL=mysql://root:root@db:3306/backend_db # Connection string for the database.
@@ -16,7 +16,7 @@ services:
   composer_installation:
     build: # Info to build the Docker image
       context: . # Specify where the Dockerfile is located (e.g. in the root directory of the backend)
-      dockerfile: Dockerfile-composer # Specify the name of the Dockerfile
+      dockerfile: ./docker/Dockerfile-composer # Specify the name of the Dockerfile
     volumes:
       - ./backend/:/app
     command: composer install --ignore-platform-reqs
@@ -24,7 +24,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: Dockerfile-nginx
+      dockerfile: ./docker/Dockerfile-nginx
     restart: unless-stopped
     volumes:
       - ./backend/:/var/www/backend/
@@ -37,7 +37,7 @@ services:
   db:
     build: # Info to build the Docker image
       context: . # Specify where the Dockerfile is located (e.g. in the root directory of the backend)
-      dockerfile: Dockerfile-mysql # Specify the name of the Dockerfile
+      dockerfile: ./docker/Dockerfile-mysql # Specify the name of the Dockerfile
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=root # Setting the MYSQL credentials to root:root.
@@ -49,7 +49,7 @@ services:
   phpmyadmin:
     build: # Info to build the Docker image
       context: . # Specify where the Dockerfile is located (e.g. in the root directory of the backend)
-      dockerfile: Dockerfile-phpmyadmin # Specify the name of the Dockerfile
+      dockerfile: ./docker/Dockerfile-phpmyadmin # Specify the name of the Dockerfile
     container_name: ktebna_phpmyadmin
     restart: unless-stopped
     environment:
@@ -62,7 +62,7 @@ services:
   angular: # The name of the service
     build: # Info to build the Docker image
       context: . # Specify where the Dockerfile is located (e.g. in the root directory of the backend)
-      dockerfile: Dockerfile-angular # Specify the name of the Dockerfile
+      dockerfile: ./docker/Dockerfile-angular # Specify the name of the Dockerfile
     volumes: # Volume binding
       - ./frontend/:/usr/src/app
     ports:
