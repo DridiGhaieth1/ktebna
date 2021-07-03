@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,gBAAiB;EACf,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,GAAG;;AAGd,YAAa;EACX,UAAU,EAAE,KAAK;EACjB,KAAK,EAAE,KAAK;;AAEd,KAAM;EACJ,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,IAAI",
+"sources": ["cases.component.scss"],
+"names": [],
+"file": "cases.component.css"
+}

@@ -1,0 +1,64 @@
+<div *ngIf="isLoadingResults"
+     class="cases-loading-shade">
+  <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+</div>
+<mat-form-field class="cases-full-width">
+  <mat-label>Gender</mat-label>
+  <mat-select (selectionChange)="genderChanged()" [(value)]="gender">
+    <!-- todo: (ngFor) Vous devez appliquer les directives de structures « *ngFor » et « *ngIf » -->
+    <mat-option *ngFor="let gl of genderList" [value]="gl">
+      <!-- todo: (binding) interpolation -->
+      {{gl}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="cases-full-width">
+  <mat-label>Status</mat-label>
+  <!-- todo: (binding) event binding -->
+  <mat-select (selectionChange)="statusChanged()" [(value)]="status">
+    <!-- todo: (binding) property binding -->
+    <mat-option *ngFor="let sl of statusList" [value]="sl">
+      {{sl}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<!-- todo: (search) Votre application doit contenir au moins une fonctionnalité de recherche multicritère -->
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <label>
+    <!-- todo: (binding) two way binding -->
+    <input
+      (keyup)="callOnEnter($event)"
+      [(ngModel)]="search"
+      class="form-control"
+      id="search"
+      matInput
+      placeholder="Search name"
+      type="search"
+    />
+  </label>
+  <mat-icon id="search-icon">search</mat-icon>
+</mat-form-field>
+<table [dataSource]="data" class="mat-elevation-z8" mat-table>
+
+  <!-- Cases Name Column -->
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell>Cases Name</th>
+    <td *matCellDef="let row" mat-cell>{{row.name}}</td>
+  </ng-container>
+
+  <!-- Cases Age Column -->
+  <ng-container matColumnDef="age">
+    <th *matHeaderCellDef mat-header-cell>Age</th>
+    <td *matCellDef="let row" mat-cell>{{row.age}}</td>
+  </ng-container>
+
+  <!-- Cases Status Column -->
+  <ng-container matColumnDef="status">
+    <th *matHeaderCellDef mat-header-cell>Status</th>
+    <td *matCellDef="let row" mat-cell>{{row.status}}</td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/cases-details/', row.id]" mat-row></tr>
+</table>

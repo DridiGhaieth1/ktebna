@@ -1,0 +1,23 @@
+<div>
+  <mat-toolbar color="primary">
+    <span><a href="/" color="primary" mat-flat-button>
+      Corona Virus Cases</a></span>
+
+  </mat-toolbar>
+  <mat-card>
+    <a [routerLink]="['/add-cases']" color="primary" mat-flat-button class="nav-button">
+      <mat-icon>add</mat-icon>
+      Cases</a>
+    <a [routerLink]="['/cases-stat']" color="accent" mat-flat-button class="nav-button">
+      <mat-icon>bar_chart</mat-icon>
+      Statistic</a>
+    <a [routerLink]="['/cases-list']" color="warn" mat-flat-button class="nav-button">
+      <mat-icon>list</mat-icon>
+      List</a>
+  </mat-card>
+  <form class="form-center">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </form>
+</div>

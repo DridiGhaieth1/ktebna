@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "mappings": "AAAA,gBAAiB;EACf,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,GAAG;;AAId,oBAAqB;EACnB,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,CAAC;EACN,IAAI,EAAE,CAAC;EACP,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,CAAC;EACR,UAAU,EAAE,mBAAmB;EAC/B,OAAO,EAAE,CAAC;EACV,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM",
+  "sources": [
+    "cases-stat.component.scss"
+  ],
+  "names": [],
+  "file": "cases-stat.component.css"
+}

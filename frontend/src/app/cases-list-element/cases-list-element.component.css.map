@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,mBAAoB;EAClB,KAAK,EAAE,cAAc;EACrB,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,YAAY",
+"sources": ["cases-list-element.component.scss"],
+"names": [],
+"file": "cases-list-element.component.css"
+}

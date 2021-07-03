@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "mappings": "AAAA,gBAAiB;EACf,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,GAAG;;AAGd,WAAY;EACV,SAAS,EAAE,KAAK;EAChB,SAAS,EAAE,KAAK;EAChB,KAAK,EAAE,IAAI;;AAGb,iBAAkB;EAChB,KAAK,EAAE,IAAI;;AAGb,mCAAoC;EAClC,aAAa,EAAE,IAAI;;AAGrB,WAAY;EACV,MAAM,EAAE,MAAM",
+  "sources": [
+    "edit-cases.component.scss"
+  ],
+  "names": [],
+  "file": "edit-cases.component.css"
+}

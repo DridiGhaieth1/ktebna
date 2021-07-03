@@ -1,0 +1,93 @@
+<div class="cases-container mat-elevation-z8">
+  <!-- todo: (ngIf) Vous devez appliquer les directives de structures « *ngFor » et « *ngIf » -->
+  <div *ngIf="isLoadingResults"
+       class="cases-loading-shade">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <mat-card class="cases-card">
+    <form (ngSubmit)="onFormSubmit()" [formGroup]="casesForm">
+      <mat-form-field class="cases-full-width">
+        <label>
+          <mat-label>Name</mat-label>
+          <!-- todo: (formControlName) Vous devez appliquer au moins une directive d’attribut à part la directive NgModel -->
+          <input [errorStateMatcher]="matcher" formControlName="name" matInput
+                 placeholder="Name">
+        </label>
+        <mat-error>
+          <span *ngIf="!casesForm.get('name')?.valid && casesForm.get('name')?.touched">Please enter Name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="cases-full-width">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option *ngFor="let gl of genderList" [value]="gl">
+            {{gl}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="!casesForm.get('gender')?.valid && casesForm.get('gender')?.touched">Please choose Gender</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="cases-full-width">
+        <label>
+          <mat-label>Age</mat-label>
+          <!-- todo: (template driven) Appliquez l’approches « Template driven Forms » dans votre projet -->
+          <input [errorStateMatcher]="matcher" formControlName="age" matInput placeholder="Age"
+                 type="number">
+        </label>
+        <mat-error>
+          <!-- todo: (template driven) Appliquez l’approches « Template driven Forms » dans votre projet -->
+          <span *ngIf="!casesForm.get('age')?.valid && casesForm.get('age')?.touched">Please enter Age</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="cases-full-width">
+        <label>
+          <mat-label>Address</mat-label>
+          <input [errorStateMatcher]="matcher" formControlName="address" matInput
+                 placeholder="Address">
+        </label>
+        <mat-error>
+          <span
+            *ngIf="!casesForm.get('address')?.valid && casesForm.get('address')?.touched">Please enter Address</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="cases-full-width">
+        <label>
+          <mat-label>City</mat-label>
+          <input [errorStateMatcher]="matcher" formControlName="city" matInput
+                 placeholder="City">
+        </label>
+        <mat-error>
+          <span *ngIf="!casesForm.get('city')?.valid && casesForm.get('city')?.touched">Please enter City</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="cases-full-width">
+        <label>
+          <mat-label>Country</mat-label>
+          <input [errorStateMatcher]="matcher" formControlName="country" matInput
+                 placeholder="Country">
+        </label>
+        <mat-error>
+          <span
+            *ngIf="!casesForm.get('country')?.valid && casesForm.get('country')?.touched">Please enter Country</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="cases-full-width">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let sl of statusList" [value]="sl">
+            {{sl}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="!casesForm.get('status')?.valid && casesForm.get('status')?.touched">Please select Status</span>
+        </mat-error>
+      </mat-form-field>
+      <div class="button-row">
+        <button [disabled]="!casesForm?.valid" color="primary" mat-flat-button type="submit">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

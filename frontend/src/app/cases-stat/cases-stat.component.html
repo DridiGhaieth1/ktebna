@@ -1,0 +1,23 @@
+<div class="cases-container mat-elevation-z8">
+  <div *ngIf="isLoadingResults"
+       class="cases-loading-shade">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <mat-button-toggle-group [(ngModel)]="label" aria-label="Status" name="status">
+      <mat-button-toggle (click)="changeStatus()" value="Positive">Positive</mat-button-toggle>
+      <mat-button-toggle (click)="changeStatus()" value="Dead">Dead</mat-button-toggle>
+      <mat-button-toggle (click)="changeStatus()" value="Recovered">Recovered</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div style="display: block;">
+    <canvas [chartType]="barChartType"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [legend]="barChartLegend"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            baseChart>
+    </canvas>
+  </div>
+</div>

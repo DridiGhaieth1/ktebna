@@ -1,0 +1,91 @@
+{
+  "statistics": [
+    {
+      "label": "Recovered",
+      "date": "10/07/2020",
+      "count": 690
+    },
+    {
+      "label": "Dead",
+      "date": "10/07/2020",
+      "count": 220
+    },
+    {
+      "label": "Positive",
+      "date": "10/07/2020",
+      "count": 3000
+    },
+    {
+      "label": "Recovered",
+      "date": "11/07/2020",
+      "count": 700
+    },
+    {
+      "label": "Dead",
+      "date": "11/07/2020",
+      "count": 225
+    },
+    {
+      "label": "Positive",
+      "date": "11/07/2020",
+      "count": 3227
+    },
+    {
+      "label": "Recovered",
+      "date": "12/07/2020",
+      "count": 719
+    },
+    {
+      "label": "Dead",
+      "date": "12/07/2020",
+      "count": 219
+    },
+    {
+      "label": "Positive",
+      "date": "12/07/2020",
+      "count": 3301
+    }
+  ],
+  "cases": [
+    {
+      "name": "Jhon doe",
+      "gender": "Female",
+      "age": 50,
+      "address": "8 Street x",
+      "city": "Tunis",
+      "country": "Tunisia",
+      "status": "Recovered",
+      "id": 1
+    },
+    {
+      "name": "Taghouti Tarek",
+      "gender": "Male",
+      "age": 28,
+      "address": "aaa",
+      "city": "M2",
+      "country": "aaa",
+      "status": "Dead",
+      "id": 2
+    },
+    {
+      "name": "Taghouti Tarek",
+      "gender": "Male",
+      "age": 28,
+      "address": "aaa",
+      "city": "M2",
+      "country": "aaa",
+      "status": "Recovered",
+      "id": 3
+    },
+    {
+      "name": "Taghouti Tarek",
+      "gender": "Male",
+      "age": 2,
+      "address": "aaa",
+      "city": "M2",
+      "country": "aaa",
+      "status": "Dead",
+      "id": 4
+    }
+  ]
+}

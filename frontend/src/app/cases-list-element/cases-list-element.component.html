@@ -1,0 +1,19 @@
+<div class="mat-card-container">
+  <mat-card class="mat-card">
+    <mat-card-header>
+      <mat-card-title>{{ caseDetails?.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Age: {{caseDetails?.age}} - {{caseDetails?.gender}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="delete()" color="warn" mat-button>DELETE</button>
+    </mat-card-actions>
+    <div class="mat-card-body">
+      <h5 class="mat-card-title">{{ caseDetails?.name }}</h5>
+      <p class="mat-card-content"> Age: {{caseDetails?.age}} - {{caseDetails?.gender}}</p>
+    </div>
+  </mat-card>
+</div>
