@@ -32,6 +32,7 @@ services:
       - 80:80 # Ports that are exposed, you can connect to port 8001 to port 80 of the container.
     depends_on:
       - fpm
+      - db
 
   db:
     build: # Info to build the Docker image
@@ -55,6 +56,21 @@ services:
       - PMA_ARBITRARY=1
       - PMA_HOST=db
       - PMA_ABSOLUTE_URI=http://db.ktebna.tn/
+    depends_on:
+      - db
+
+  angular: # The name of the service
+    build: # Info to build the Docker image
+      context: . # Specify where the Dockerfile is located (e.g. in the root directory of the backend)
+      dockerfile: Dockerfile-angular # Specify the name of the Dockerfile
+    volumes: # Volume binding
+      - ./frontend/:/usr/src/app
+    ports:
+      - 4200:4200 # Port mapping
+    command: >
+      bash -c "npm install && ng serve --host 0.0.0.0 --port 4200"
+    depends_on:
+      - nginx
 
 volumes:
   symfony_db:
