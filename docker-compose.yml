@@ -63,10 +63,10 @@ services:
     build: # Info to build the Docker image
       context: . # Specify where the Dockerfile is located (e.g. in the root directory of the backend)
       dockerfile: ./docker/Dockerfile-angular # Specify the name of the Dockerfile
+    container_name: ktebna_angular
+    restart: unless-stopped
     volumes: # Volume binding
       - ./frontend/:/usr/src/app
-    ports:
-      - 4200:4200 # Port mapping
     command: >
       bash -c "npm install && ng serve --host 0.0.0.0 --port 4200 --disableHostCheck"
     depends_on:
