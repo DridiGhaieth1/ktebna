@@ -31,11 +31,13 @@ services:
     restart: unless-stopped
     volumes:
       - ./backend/:/var/www/backend/
+      - ./build/nginx/certs:/var/www/certs/
     ports:
       - 80:80 # Ports that are exposed, you can connect to port 8001 to port 80 of the container.
     depends_on:
       - fpm
       - db
+      - angular
 
   db:
     build: # Info to build the Docker image
@@ -60,8 +62,6 @@ services:
       - PMA_ARBITRARY=1
       - PMA_HOST=db
       - PMA_ABSOLUTE_URI=http://db.ktebna.tn/
-    depends_on:
-      - db
 
   angular: # The name of the service
     build: # Info to build the Docker image
@@ -73,8 +73,6 @@ services:
       - ./frontend/:/usr/src/app
     command: >
       bash -c "npm install && ng serve --host 0.0.0.0 --port 80 --disable-host-check"
-    depends_on:
-      - nginx
 
 volumes:
   symfony_db:
