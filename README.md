@@ -51,9 +51,13 @@ docker-compose up -d
 ```docker-compose build``` to build any changes
 ```docker-compose logs -f``` show all services log
 
-### BASH.SH
+### SYMFONY.SH
 
-```./bash.sh``` open bash inside php container
+```./symfony.sh``` open bash inside php container
+
+### ANGULAR.SH
+
+```./angular.sh``` open bash inside node container
 
 ## FIXES
 
