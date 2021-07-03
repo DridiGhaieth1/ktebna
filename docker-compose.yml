@@ -14,7 +14,9 @@ services:
       - composer_installation
 
   composer_installation:
-    image: composer
+    build: # Info to build the Docker image
+      context: . # Specify where the Dockerfile is located (e.g. in the root directory of the backend)
+      dockerfile: Dockerfile-composer # Specify the name of the Dockerfile
     volumes:
       - ./backend/:/app
     command: composer install --ignore-platform-reqs
@@ -32,7 +34,9 @@ services:
       - fpm
 
   db:
-    image: mysql:5.6
+    build: # Info to build the Docker image
+      context: . # Specify where the Dockerfile is located (e.g. in the root directory of the backend)
+      dockerfile: Dockerfile-mysql # Specify the name of the Dockerfile
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=root # Setting the MYSQL credentials to root:root.
@@ -42,7 +46,9 @@ services:
       - 3311:3306
 
   phpmyadmin:
-    image: phpmyadmin
+    build: # Info to build the Docker image
+      context: . # Specify where the Dockerfile is located (e.g. in the root directory of the backend)
+      dockerfile: Dockerfile-phpmyadmin # Specify the name of the Dockerfile
     container_name: ktebna_phpmyadmin
     restart: unless-stopped
     environment:
