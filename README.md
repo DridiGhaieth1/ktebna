@@ -2,7 +2,7 @@
 
 ## COPYRIGHTS
 
-Most of the docker configs based on a project from github
+Most of the docker configs based on a project from GitHub
 
 ```https://github.com/nielsvandermolen/example_symfony4_api```
 
