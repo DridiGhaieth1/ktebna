@@ -28,6 +28,12 @@ Our application based on 3 domains:
 
 All the domains routed using **nginx reverse proxy**
 
+### PROD ENVIRONMENT
+
+* OS : Ubuntu 18.04.5 LTS
+* Docker : version 20.10.7, build f0df350
+* Docker compose : version 1.17.1, build unknown
+
 ### INSTALLATION
 
 You need to add all the domains to your hosts file
