@@ -30,7 +30,7 @@ services:
     container_name: ktebna_nginx
     restart: unless-stopped
     volumes:
-      - ./backend/:/var/www/backend/
+      - ./:/var/www/ktebna/
       - ./build/nginx/certs:/var/www/certs/
     ports:
       - 80:80 # Ports that are exposed, you can connect to port 8001 to port 80 of the container.
