@@ -12,7 +12,7 @@ Angular project based on our angular validation project
 
 ## INTRODUCTION
 
-We will use this project to create all the backend part using SM4 api platform / easyadmin, 
+We will use this project to create all the backend part using Symfony 5.3, 
 frontend based on angular, 
 all the services provided as docker images
 
@@ -50,6 +50,12 @@ docker-compose up -d
 
 ## TOOLS
 
+### GENERATE JWT RSA KEYS
+
+```shell
+php bin/console lexik:jwt:generate-keypair
+```
+
 ### DOCKER-COMPOSE
 
 ```docker-compose up -d``` to start all the services
@@ -72,3 +78,9 @@ docker-compose up -d
 PHP config limits the memory, if there is any memory problem while using composer update, juste run
 
 ```php -d memory_limit=-1 $(which composer) update```
+
+### NO DISK SPACE
+
+```shell
+docker image prune -a
+```
