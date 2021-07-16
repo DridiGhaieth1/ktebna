@@ -84,3 +84,9 @@ PHP config limits the memory, if there is any memory problem while using compose
 ```shell
 docker image prune -a
 ```
+## EXTRA
+
+### SM5 REST TUTORIALS
+
+- [PART 1 - Create a controller](https://h-benkachoud.medium.com/symfony-rest-api-without-fosrestbundle-and-using-jwt-authentication-part-1-944aa4faf946)
+- [PART 2 - JWT Integration](https://h-benkachoud.medium.com/symfony-rest-api-without-fosrestbundle-using-jwt-authentication-part-2-be394d0924dd)
