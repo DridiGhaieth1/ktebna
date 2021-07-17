@@ -26,7 +26,7 @@ final class Version20210716200436 extends AbstractMigration
         $this->addSql('CREATE TABLE eBook (id INT AUTO_INCREMENT NOT NULL, id_author INT NOT NULL, id_category INT NOT NULL, title TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, description TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, year INT NOT NULL, cover TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, language TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, price DOUBLE PRECISION NOT NULL, url TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, INDEX id_category (id_category), INDEX id_author (id_author), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('CREATE TABLE feature (id INT AUTO_INCREMENT NOT NULL, name TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, description TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('CREATE TABLE inovice (id INT AUTO_INCREMENT NOT NULL, status TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, date DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
-        $this->addSql('CREATE TABLE order (id INT AUTO_INCREMENT NOT NULL, date DATETIME NOT NULL, status TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('CREATE TABLE orderr (id INT AUTO_INCREMENT NOT NULL, date DATETIME NOT NULL, status TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('CREATE TABLE plan (id INT AUTO_INCREMENT NOT NULL, name TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, price DOUBLE PRECISION NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('CREATE TABLE subscription (id INT AUTO_INCREMENT NOT NULL, id_user INT NOT NULL, start DATETIME NOT NULL, months INT NOT NULL, amount DOUBLE PRECISION NOT NULL, status TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, transaction TEXT CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, INDEX id_user (id_user), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('ALTER TABLE book ADD CONSTRAINT book_ibfk_1 FOREIGN KEY (id_adder) REFERENCES user (id)');
@@ -52,7 +52,7 @@ final class Version20210716200436 extends AbstractMigration
         $this->addSql('DROP TABLE eBook');
         $this->addSql('DROP TABLE feature');
         $this->addSql('DROP TABLE inovice');
-        $this->addSql('DROP TABLE order');
+        $this->addSql('DROP TABLE orderr');
         $this->addSql('DROP TABLE plan');
         $this->addSql('DROP TABLE subscription');
     }
