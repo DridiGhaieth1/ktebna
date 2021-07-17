@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Book
  *
- * @ORM\Table(name="book", indexes={@ORM\Index(name="id_category", columns={"id_category"}), @ORM\Index(name="id_author", columns={"id_author"})})
+ * @ORM\Table(name="book", indexes={@ORM\Index(name="id_author", columns={"id_author"})})
  * @ORM\Entity
  */
 class Book
@@ -80,16 +80,6 @@ class Book
     private $value;
 
     /**
-     * @var Category
-     *
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_category", referencedColumnName="id")
-     * })
-     */
-    private $idCategory;
-
-    /**
      * @var \Author
      *
      * @ORM\ManyToOne(targetEntity="Author")
@@ -126,11 +116,17 @@ class Book
      */
     private $orders;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="books")
+     */
+    private $categories;
+
     public function __construct()
     {
         $this->adders = new ArrayCollection();
         $this->owners = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -210,6 +206,30 @@ class Book
         if ($this->orders->removeElement($order)) {
             $order->removeOrder($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->categories->removeElement($category);
 
         return $this;
     }

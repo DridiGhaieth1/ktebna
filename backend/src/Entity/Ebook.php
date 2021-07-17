@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Ebook
  *
- * @ORM\Table(name="eBook", indexes={@ORM\Index(name="id_category", columns={"id_category"}), @ORM\Index(name="id_author", columns={"id_author"})})
+ * @ORM\Table(name="ebook", indexes={@ORM\Index(name="id_author", columns={"id_author"})})
  * @ORM\Entity
  */
 class Ebook
@@ -71,16 +73,6 @@ class Ebook
     private $url;
 
     /**
-     * @var \Category
-     *
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_category", referencedColumnName="id")
-     * })
-     */
-    private $idCategory;
-
-    /**
      * @var \Author
      *
      * @ORM\ManyToOne(targetEntity="Author")
@@ -89,6 +81,40 @@ class Ebook
      * })
      */
     private $idAuthor;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class)
+     */
+    private $categories;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->categories->removeElement($category);
+
+        return $this;
+    }
 
 
 }
