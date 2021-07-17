@@ -72,11 +72,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $invoices;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Adders::class, mappedBy="user")
+     */
+    private $adders;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Owners::class, mappedBy="user")
+     */
+    private $owners;
+
     public function __construct()
     {
         $this->ebooks = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->invoices = new ArrayCollection();
+        $this->adders = new ArrayCollection();
+        $this->owners = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -300,6 +312,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($invoice->getUser() === $this) {
                 $invoice->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Adders[]
+     */
+    public function getAdders(): Collection
+    {
+        return $this->adders;
+    }
+
+    public function addAdder(Adders $adder): self
+    {
+        if (!$this->adders->contains($adder)) {
+            $this->adders[] = $adder;
+            $adder->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdder(Adders $adder): self
+    {
+        if ($this->adders->removeElement($adder)) {
+            // set the owning side to null (unless already changed)
+            if ($adder->getUser() === $this) {
+                $adder->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Owners[]
+     */
+    public function getOwners(): Collection
+    {
+        return $this->owners;
+    }
+
+    public function addOwner(Owners $owner): self
+    {
+        if (!$this->owners->contains($owner)) {
+            $this->owners[] = $owner;
+            $owner->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOwner(Owners $owner): self
+    {
+        if ($this->owners->removeElement($owner)) {
+            // set the owning side to null (unless already changed)
+            if ($owner->getUser() === $this) {
+                $owner->setUser(null);
             }
         }
 

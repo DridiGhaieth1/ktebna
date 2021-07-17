@@ -99,6 +99,16 @@ class Book
      */
     private $orders;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Adders::class, mappedBy="book")
+     */
+    private $adders;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Owners::class, mappedBy="book")
+     */
+    private $owners;
+
     public function __construct()
     {
         $this->adders = new ArrayCollection();
@@ -155,6 +165,66 @@ class Book
             // set the owning side to null (unless already changed)
             if ($order->getBook() === $this) {
                 $order->setBook(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Adders[]
+     */
+    public function getAdders(): Collection
+    {
+        return $this->adders;
+    }
+
+    public function addAdder(Adders $adder): self
+    {
+        if (!$this->adders->contains($adder)) {
+            $this->adders[] = $adder;
+            $adder->setBook($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdder(Adders $adder): self
+    {
+        if ($this->adders->removeElement($adder)) {
+            // set the owning side to null (unless already changed)
+            if ($adder->getBook() === $this) {
+                $adder->setBook(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Owners[]
+     */
+    public function getOwners(): Collection
+    {
+        return $this->owners;
+    }
+
+    public function addOwner(Owners $owner): self
+    {
+        if (!$this->owners->contains($owner)) {
+            $this->owners[] = $owner;
+            $owner->setBook($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOwner(Owners $owner): self
+    {
+        if ($this->owners->removeElement($owner)) {
+            // set the owning side to null (unless already changed)
+            if ($owner->getBook() === $this) {
+                $owner->setBook(null);
             }
         }
 
