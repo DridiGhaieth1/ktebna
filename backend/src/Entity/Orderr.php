@@ -31,7 +31,7 @@ class Orderr
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="status", type="string", length=30, nullable=false)
      */
     private $status;
 

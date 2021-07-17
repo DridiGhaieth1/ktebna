@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,7 +23,7 @@ class Subscription
     private $id;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="start", type="datetime", nullable=false)
      */
@@ -45,19 +46,19 @@ class Subscription
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="status", type="string", length=30, nullable=false)
      */
     private $status;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="transaction", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="transaction", type="string", length=30, nullable=false)
      */
     private $transaction;
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({

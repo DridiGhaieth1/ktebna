@@ -24,14 +24,14 @@ class Book
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="title", type="string", length=30, nullable=false)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="description", type="string", length=30, nullable=false)
      */
     private $description;
 
@@ -45,21 +45,21 @@ class Book
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="photo", type="string", length=30, nullable=false)
      */
     private $photo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cover", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="cover", type="string", length=30, nullable=false)
      */
     private $cover;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="language", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="language", type="string", length=30, nullable=false)
      */
     private $language;
 

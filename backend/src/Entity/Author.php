@@ -24,7 +24,7 @@ class Author
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="name", type="string", length=30, nullable=false)
      */
     private $name;
 
@@ -38,14 +38,14 @@ class Author
     /**
      * @var string|null
      *
-     * @ORM\Column(name="picture", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="picture", type="string", length=30, nullable=true)
      */
     private $picture;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="country", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="country", type="string", length=30, nullable=true)
      */
     private $country;
 

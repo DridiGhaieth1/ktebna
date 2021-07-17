@@ -24,7 +24,7 @@ class Plan
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="name", type="string", length=30, nullable=false)
      */
     private $name;
 
