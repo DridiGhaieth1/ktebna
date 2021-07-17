@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,6 +36,40 @@ class Plan
      * @ORM\Column(name="price", type="float", precision=10, scale=0, nullable=false)
      */
     private $price;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Feature::class, inversedBy="plans")
+     */
+    private $featues;
+
+    public function __construct()
+    {
+        $this->featues = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Feature[]
+     */
+    public function getFeatues(): Collection
+    {
+        return $this->featues;
+    }
+
+    public function addFeatue(Feature $featue): self
+    {
+        if (!$this->featues->contains($featue)) {
+            $this->featues[] = $featue;
+        }
+
+        return $this;
+    }
+
+    public function removeFeatue(Feature $featue): self
+    {
+        $this->featues->removeElement($featue);
+
+        return $this;
+    }
 
 
 }
