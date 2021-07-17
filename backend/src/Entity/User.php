@@ -93,12 +93,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $subscriptions;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Ebook::class, mappedBy="user")
+     */
+    private $ebooks;
+
     public function __construct()
     {
         $this->added = new ArrayCollection();
         $this->owned = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->subscriptions = new ArrayCollection();
+        $this->ebooks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -330,6 +336,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeSubscription(Subscription $subscription): self
     {
         $this->subscriptions->removeElement($subscription);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ebook[]
+     */
+    public function getEbooks(): Collection
+    {
+        return $this->ebooks;
+    }
+
+    public function addEbook(Ebook $ebook): self
+    {
+        if (!$this->ebooks->contains($ebook)) {
+            $this->ebooks[] = $ebook;
+            $ebook->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEbook(Ebook $ebook): self
+    {
+        if ($this->ebooks->removeElement($ebook)) {
+            // set the owning side to null (unless already changed)
+            if ($ebook->getUser() === $this) {
+                $ebook->setUser(null);
+            }
+        }
 
         return $this;
     }
