@@ -58,52 +58,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $is_admin;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="adders")
-     * @ORM\JoinTable(name="adders",
-     *                  joinColumns={@ORM\JoinColumn(name="id_user",
-     *                  referencedColumnName="id")},
-     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_book",referencedColumnName="id")})
-     */
-    private $added;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="owners")
-     * @ORM\JoinTable(name="owners",
-     *                  joinColumns={@ORM\JoinColumn(name="id_user",
-     *                  referencedColumnName="id")},
-     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_book",referencedColumnName="id")})
-     */
-    private $owned;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="orders")
-     * @ORM\JoinTable(name="orders",
-     *                  joinColumns={@ORM\JoinColumn(name="id_user",
-     *                  referencedColumnName="id")},
-     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_book",referencedColumnName="id")})
-     */
-    private $orders;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Subscription::class, inversedBy="users")
-     * @ORM\JoinTable(name="invoices",
-     *                  joinColumns={@ORM\JoinColumn(name="id_user",
-     *                  referencedColumnName="id")},
-     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_subscription",referencedColumnName="id")})
-     */
-    private $subscriptions;
-
-    /**
      * @ORM\OneToMany(targetEntity=Ebook::class, mappedBy="user")
      */
     private $ebooks;
 
     public function __construct()
     {
-        $this->added = new ArrayCollection();
-        $this->owned = new ArrayCollection();
-        $this->orders = new ArrayCollection();
-        $this->subscriptions = new ArrayCollection();
         $this->ebooks = new ArrayCollection();
     }
 
@@ -240,102 +200,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsAdmin(?bool $is_admin): self
     {
         $this->is_admin = $is_admin;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Book[]
-     */
-    public function getAdded(): Collection
-    {
-        return $this->added;
-    }
-
-    public function addAdded(Book $added): self
-    {
-        if (!$this->added->contains($added)) {
-            $this->added[] = $added;
-        }
-
-        return $this;
-    }
-
-    public function removeAdded(Book $added): self
-    {
-        $this->added->removeElement($added);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Book[]
-     */
-    public function getOwned(): Collection
-    {
-        return $this->owned;
-    }
-
-    public function addOwned(Book $owned): self
-    {
-        if (!$this->owned->contains($owned)) {
-            $this->owned[] = $owned;
-        }
-
-        return $this;
-    }
-
-    public function removeOwned(Book $owned): self
-    {
-        $this->owned->removeElement($owned);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Book[]
-     */
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(Book $order): self
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-        }
-
-        return $this;
-    }
-
-    public function removeOrder(Book $order): self
-    {
-        $this->orders->removeElement($order);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Subscription[]
-     */
-    public function getSubscriptions(): Collection
-    {
-        return $this->subscriptions;
-    }
-
-    public function addSubscription(Subscription $subscription): self
-    {
-        if (!$this->subscriptions->contains($subscription)) {
-            $this->subscriptions[] = $subscription;
-        }
-
-        return $this;
-    }
-
-    public function removeSubscription(Subscription $subscription): self
-    {
-        $this->subscriptions->removeElement($subscription);
 
         return $this;
     }

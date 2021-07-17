@@ -75,18 +75,8 @@ class Subscription
      */
     private $plan;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="subscriptions")
-     * @ORM\JoinTable(name="invoices",
-     *                  joinColumns={@ORM\JoinColumn(name="id_subscription",
-     *                  referencedColumnName="id")},
-     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_user",referencedColumnName="id")})
-     */
-    private $users;
-
     public function __construct()
     {
-        $this->users = new ArrayCollection();
     }
 
     public function getPlan(): ?Plan
@@ -100,33 +90,4 @@ class Subscription
 
         return $this;
     }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addSubscription($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            $user->removeSubscription($this);
-        }
-
-        return $this;
-    }
-
-
 }

@@ -90,33 +90,6 @@ class Book
     private $idAuthor;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="added")
-     * @ORM\JoinTable(name="adders",
-     *                  joinColumns={@ORM\JoinColumn(name="id_book",
-     *                  referencedColumnName="id")},
-     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_user",referencedColumnName="id")})
-     */
-    private $adders;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="owned")
-     * @ORM\JoinTable(name="adders",
-     *                  joinColumns={@ORM\JoinColumn(name="id_book",
-     *                  referencedColumnName="id")},
-     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_user",referencedColumnName="id")})
-     */
-    private $owners;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="orders")
-     * @ORM\JoinTable(name="adders",
-     *                  joinColumns={@ORM\JoinColumn(name="id_book",
-     *                  referencedColumnName="id")},
-     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_user",referencedColumnName="id")})
-     */
-    private $orders;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="books")
      */
     private $categories;
@@ -127,87 +100,6 @@ class Book
         $this->owners = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->categories = new ArrayCollection();
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getAdders(): Collection
-    {
-        return $this->adders;
-    }
-
-    public function addAdder(User $adder): self
-    {
-        if (!$this->adders->contains($adder)) {
-            $this->adders[] = $adder;
-            $adder->addAdded($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAdder(User $adder): self
-    {
-        if ($this->adders->removeElement($adder)) {
-            $adder->removeAdded($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getOwners(): Collection
-    {
-        return $this->owners;
-    }
-
-    public function addOwner(User $owner): self
-    {
-        if (!$this->owners->contains($owner)) {
-            $this->owners[] = $owner;
-            $owner->addOwned($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOwner(User $owner): self
-    {
-        if ($this->owners->removeElement($owner)) {
-            $owner->removeOwned($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(User $order): self
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-            $order->addOrder($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrder(User $order): self
-    {
-        if ($this->orders->removeElement($order)) {
-            $order->removeOrder($this);
-        }
-
-        return $this;
     }
 
     /**
