@@ -71,6 +71,12 @@ php bin/console lexik:jwt:generate-keypair
 
 ```./angular.sh``` open bash inside node container
 
+### FIXTURES
+
+```shell
+php bin/console doctrine:fixtures:load --help
+```
+
 ## FIXES
 
 ### COMPOSER UPDATE MEMORY LIMIT

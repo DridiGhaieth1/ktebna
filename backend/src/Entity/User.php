@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -20,7 +22,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=30, unique=true)
      */
     private $email;
 
@@ -36,7 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=30)
      */
     private $name;
 
@@ -54,6 +56,40 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $is_admin;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Ebook::class, mappedBy="user")
+     */
+    private $ebooks;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="user")
+     */
+    private $orders;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Invoice::class, mappedBy="user")
+     */
+    private $invoices;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Adders::class, mappedBy="user")
+     */
+    private $adders;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Owners::class, mappedBy="user")
+     */
+    private $owners;
+
+    public function __construct()
+    {
+        $this->ebooks = new ArrayCollection();
+        $this->orders = new ArrayCollection();
+        $this->invoices = new ArrayCollection();
+        $this->adders = new ArrayCollection();
+        $this->owners = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -188,6 +224,156 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsAdmin(?bool $is_admin): self
     {
         $this->is_admin = $is_admin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ebook[]
+     */
+    public function getEbooks(): Collection
+    {
+        return $this->ebooks;
+    }
+
+    public function addEbook(Ebook $ebook): self
+    {
+        if (!$this->ebooks->contains($ebook)) {
+            $this->ebooks[] = $ebook;
+            $ebook->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEbook(Ebook $ebook): self
+    {
+        if ($this->ebooks->removeElement($ebook)) {
+            // set the owning side to null (unless already changed)
+            if ($ebook->getUser() === $this) {
+                $ebook->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->orders->removeElement($order)) {
+            // set the owning side to null (unless already changed)
+            if ($order->getUser() === $this) {
+                $order->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Invoice[]
+     */
+    public function getInvoices(): Collection
+    {
+        return $this->invoices;
+    }
+
+    public function addInvoice(Invoice $invoice): self
+    {
+        if (!$this->invoices->contains($invoice)) {
+            $this->invoices[] = $invoice;
+            $invoice->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice): self
+    {
+        if ($this->invoices->removeElement($invoice)) {
+            // set the owning side to null (unless already changed)
+            if ($invoice->getUser() === $this) {
+                $invoice->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Adders[]
+     */
+    public function getAdders(): Collection
+    {
+        return $this->adders;
+    }
+
+    public function addAdder(Adders $adder): self
+    {
+        if (!$this->adders->contains($adder)) {
+            $this->adders[] = $adder;
+            $adder->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdder(Adders $adder): self
+    {
+        if ($this->adders->removeElement($adder)) {
+            // set the owning side to null (unless already changed)
+            if ($adder->getUser() === $this) {
+                $adder->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Owners[]
+     */
+    public function getOwners(): Collection
+    {
+        return $this->owners;
+    }
+
+    public function addOwner(Owners $owner): self
+    {
+        if (!$this->owners->contains($owner)) {
+            $this->owners[] = $owner;
+            $owner->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOwner(Owners $owner): self
+    {
+        if ($this->owners->removeElement($owner)) {
+            // set the owning side to null (unless already changed)
+            if ($owner->getUser() === $this) {
+                $owner->setUser(null);
+            }
+        }
 
         return $this;
     }
