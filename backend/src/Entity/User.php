@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -54,6 +56,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $is_admin;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="adders")
+     */
+    private $added;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="owners")
+     */
+    private $owned;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="orders")
+     */
+    private $orders;
+
+    public function __construct()
+    {
+        $this->added = new ArrayCollection();
+        $this->owned = new ArrayCollection();
+        $this->orders = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -188,6 +212,78 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsAdmin(?bool $is_admin): self
     {
         $this->is_admin = $is_admin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Book[]
+     */
+    public function getAdded(): Collection
+    {
+        return $this->added;
+    }
+
+    public function addAdded(Book $added): self
+    {
+        if (!$this->added->contains($added)) {
+            $this->added[] = $added;
+        }
+
+        return $this;
+    }
+
+    public function removeAdded(Book $added): self
+    {
+        $this->added->removeElement($added);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Book[]
+     */
+    public function getOwned(): Collection
+    {
+        return $this->owned;
+    }
+
+    public function addOwned(Book $owned): self
+    {
+        if (!$this->owned->contains($owned)) {
+            $this->owned[] = $owned;
+        }
+
+        return $this;
+    }
+
+    public function removeOwned(Book $owned): self
+    {
+        $this->owned->removeElement($owned);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Book[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Book $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Book $order): self
+    {
+        $this->orders->removeElement($order);
 
         return $this;
     }
