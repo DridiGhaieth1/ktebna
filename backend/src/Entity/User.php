@@ -59,16 +59,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="adders")
+     * @ORM\JoinTable(name="adders",
+     *                  joinColumns={@ORM\JoinColumn(name="id_user",
+     *                  referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_book",referencedColumnName="id")})
      */
     private $added;
 
     /**
      * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="owners")
+     * @ORM\JoinTable(name="owners",
+     *                  joinColumns={@ORM\JoinColumn(name="id_user",
+     *                  referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_book",referencedColumnName="id")})
      */
     private $owned;
 
     /**
      * @ORM\ManyToMany(targetEntity=Book::class, inversedBy="orders")
+     * @ORM\JoinTable(name="orders",
+     *                  joinColumns={@ORM\JoinColumn(name="id_user",
+     *                  referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_book",referencedColumnName="id")})
      */
     private $orders;
 

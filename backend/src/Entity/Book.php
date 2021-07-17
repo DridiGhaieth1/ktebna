@@ -101,16 +101,28 @@ class Book
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="added")
+     * @ORM\JoinTable(name="adders",
+     *                  joinColumns={@ORM\JoinColumn(name="id_book",
+     *                  referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_user",referencedColumnName="id")})
      */
     private $adders;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="owned")
+     * @ORM\JoinTable(name="adders",
+     *                  joinColumns={@ORM\JoinColumn(name="id_book",
+     *                  referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_user",referencedColumnName="id")})
      */
     private $owners;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="orders")
+     * @ORM\JoinTable(name="adders",
+     *                  joinColumns={@ORM\JoinColumn(name="id_book",
+     *                  referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_user",referencedColumnName="id")})
      */
     private $orders;
 
