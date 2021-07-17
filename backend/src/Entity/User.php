@@ -84,11 +84,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $orders;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Subscription::class, inversedBy="users")
+     * @ORM\JoinTable(name="invoices",
+     *                  joinColumns={@ORM\JoinColumn(name="id_user",
+     *                  referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_subscription",referencedColumnName="id")})
+     */
+    private $subscriptions;
+
     public function __construct()
     {
         $this->added = new ArrayCollection();
         $this->owned = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->subscriptions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -296,6 +306,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeOrder(Book $order): self
     {
         $this->orders->removeElement($order);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Subscription[]
+     */
+    public function getSubscriptions(): Collection
+    {
+        return $this->subscriptions;
+    }
+
+    public function addSubscription(Subscription $subscription): self
+    {
+        if (!$this->subscriptions->contains($subscription)) {
+            $this->subscriptions[] = $subscription;
+        }
+
+        return $this;
+    }
+
+    public function removeSubscription(Subscription $subscription): self
+    {
+        $this->subscriptions->removeElement($subscription);
 
         return $this;
     }
