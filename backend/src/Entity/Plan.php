@@ -42,9 +42,15 @@ class Plan
      */
     private $featues;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Subscription::class, mappedBy="plan")
+     */
+    private $subscriptions;
+
     public function __construct()
     {
         $this->featues = new ArrayCollection();
+        $this->subscriptions = new ArrayCollection();
     }
 
     /**
@@ -67,6 +73,36 @@ class Plan
     public function removeFeatue(Feature $featue): self
     {
         $this->featues->removeElement($featue);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Subscription[]
+     */
+    public function getSubscriptions(): Collection
+    {
+        return $this->subscriptions;
+    }
+
+    public function addSubscription(Subscription $subscription): self
+    {
+        if (!$this->subscriptions->contains($subscription)) {
+            $this->subscriptions[] = $subscription;
+            $subscription->setPlan($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubscription(Subscription $subscription): self
+    {
+        if ($this->subscriptions->removeElement($subscription)) {
+            // set the owning side to null (unless already changed)
+            if ($subscription->getPlan() === $this) {
+                $subscription->setPlan(null);
+            }
+        }
 
         return $this;
     }
