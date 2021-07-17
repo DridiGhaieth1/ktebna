@@ -75,8 +75,14 @@ class Subscription
      */
     private $plan;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Invoice::class, mappedBy="subscription")
+     */
+    private $invoices;
+
     public function __construct()
     {
+        $this->invoices = new ArrayCollection();
     }
 
     public function getPlan(): ?Plan
@@ -87,6 +93,36 @@ class Subscription
     public function setPlan(?Plan $plan): self
     {
         $this->plan = $plan;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Invoice[]
+     */
+    public function getInvoices(): Collection
+    {
+        return $this->invoices;
+    }
+
+    public function addInvoice(Invoice $invoice): self
+    {
+        if (!$this->invoices->contains($invoice)) {
+            $this->invoices[] = $invoice;
+            $invoice->setSubscription($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice): self
+    {
+        if ($this->invoices->removeElement($invoice)) {
+            // set the owning side to null (unless already changed)
+            if ($invoice->getSubscription() === $this) {
+                $invoice->setSubscription(null);
+            }
+        }
 
         return $this;
     }
