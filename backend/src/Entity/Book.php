@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Book
  *
- * @ORM\Table(name="book", indexes={@ORM\Index(name="id_owner", columns={"id_owner"}), @ORM\Index(name="id_category", columns={"id_category"}), @ORM\Index(name="id_adder", columns={"id_adder"}), @ORM\Index(name="id_author", columns={"id_author"})})
+ * @ORM\Table(name="book", indexes={@ORM\Index(@ORM\Index(name="id_category", columns={"id_category"}), @ORM\Index(name="id_author", columns={"id_author"})})
  * @ORM\Entity
  */
 class Book
@@ -78,27 +78,7 @@ class Book
     private $value;
 
     /**
-     * @var \User
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_adder", referencedColumnName="id")
-     * })
-     */
-    private $idAdder;
-
-    /**
-     * @var \User
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_owner", referencedColumnName="id")
-     * })
-     */
-    private $idOwner;
-
-    /**
-     * @var \Category
+     * @var Category
      *
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
