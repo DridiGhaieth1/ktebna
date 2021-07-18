@@ -31,6 +31,12 @@ import {CasesStatComponent} from './cases-stat/cases-stat.component';
 import {ChartsModule} from 'ng2-charts';
 import {CasesListComponent} from './cases-list/cases-list.component';
 import {CasesListElementComponent} from './cases-list-element/cases-list-element.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardUserComponent } from './board-user/board-user.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +47,13 @@ import {CasesListElementComponent} from './cases-list-element/cases-list-element
     EditCasesComponent,
     CasesStatComponent,
     CasesListComponent,
-    CasesListElementComponent
+    CasesListElementComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardUserComponent
   ],
   imports: [
     BrowserModule,
