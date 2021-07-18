@@ -6,6 +6,12 @@ import {AddCasesComponent} from './add-cases/add-cases.component';
 import {EditCasesComponent} from './edit-cases/edit-cases.component';
 import {CasesStatComponent} from './cases-stat/cases-stat.component';
 import {CasesListComponent} from './cases-list/cases-list.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
 
 // todo: (routing) Configurez les routes et liens nécessaires à votre application
 const routes: Routes = [
@@ -40,7 +46,15 @@ const routes: Routes = [
     path: 'cases-list',
     component: CasesListComponent,
     data: {title: 'Cases List'}
-  }
+  },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'user', component: BoardUserComponent },
+  { path: 'mod', component: BoardModeratorComponent },
+  { path: 'admin', component: BoardAdminComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
