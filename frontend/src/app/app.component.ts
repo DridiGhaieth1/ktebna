@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { TokenStorageService } from './_services/token-storage.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { TokenStorageService } from './_services/token-storage.service';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit{
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
