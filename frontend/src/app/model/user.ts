@@ -1,7 +1,7 @@
 export class User {
   public id!: number;
   public email!: string;
-  public roles!: [];
+  public roles!: string[];
   public name!: string;
   public phone!: number;
   public points!: number;

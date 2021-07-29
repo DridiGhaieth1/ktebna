@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
 
     if (this.isLoggedIn) {
       this.user = this.tokenStorageService.getUser();
-      this.showAdminBoard = false;
+      this.showAdminBoard = this.user.roles.includes('ADMIN');
       this.username = this.user.email;
     }
   }

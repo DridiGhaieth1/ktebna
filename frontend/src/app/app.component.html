@@ -16,6 +16,9 @@
             <li class="active">
               <a href="/home" class="nav-link" routerLink="home">Home </a>
             </li>
+            <li *ngIf="showAdminBoard">
+              <a href="/admin" class="nav-link" routerLink="admin">Dashboard </a>
+            </li>
             <li><a href="#">Pages</a>
               <ul class="dropdown">
                 <li><a href="#">Product Details</a></li>
@@ -36,9 +39,6 @@
           <div class="header__right__auth" *ngIf="isLoggedIn">
             <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
             <a href="#" class="nav-link" (click)="logout()">Logout</a>
-          </div>
-          <div class="nav-item" *ngIf="showAdminBoard">
-            <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
           </div>
           <div class="nav-item">
             <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
