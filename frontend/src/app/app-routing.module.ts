@@ -20,7 +20,7 @@ import {AddAuteurComponent} from './add-auteur/add-auteur.component';
 
 // todo: (routing) Configurez les routes et liens nécessaires à votre application
 const routes: Routes = [
-  {path: '',  component: CasesComponent, pathMatch: 'full'},
+  {path: '',  component: HomeComponent, pathMatch: 'full'},
   {
     path: 'cases',
     component: CasesComponent,

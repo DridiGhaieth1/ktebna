@@ -44,18 +44,6 @@
             <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
             <a href="#" class="nav-link" (click)="logout()">Logout</a>
           </div>
-          <div class="nav-item">
-            <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
-          </div>
-          <ul class="header__right__widget">
-            <li><span class="icon_search search-switch"></span></li>
-            <li *ngIf="isLoggedIn"><a href="#"><span class="icon_heart_alt"></span>
-              <div class="tip">2</div>
-            </a></li>
-            <li *ngIf="isLoggedIn"><a href="#"><span class="icon_bag_alt"></span>
-              <div class="tip">2</div>
-            </a></li>
-          </ul>
         </div>
       </div>
     </div>
