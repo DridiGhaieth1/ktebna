@@ -29,7 +29,7 @@ class UserFixtures extends Fixture
         $manager->persist($user);
         $user = new User();
         $user->setEmail('user1@ktebna.tn');
-        $user->setIsAdmin(true);
+        $user->setIsAdmin(false);
         $user->setName('User one');
         $user->setPhone('52259213');
         $user->setPoints(0);
@@ -40,7 +40,7 @@ class UserFixtures extends Fixture
         $manager->persist($user);
         $user = new User();
         $user->setEmail('user2@ktebna.tn');
-        $user->setIsAdmin(true);
+        $user->setIsAdmin(false);
         $user->setName('User two');
         $user->setPhone('52259214');
         $user->setPoints(1000);
