@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <div class="card card-container">
+  <div class="container">
     <form
       *ngIf="!isSuccessful"
       name="form"
@@ -55,7 +55,7 @@
           name="password"
           [(ngModel)]="form.password"
           required
-          minlength="6"
+          minlength="4"
           #password="ngModel"
         />
         <div class="alert-danger" *ngIf="password.errors && f.submitted">
