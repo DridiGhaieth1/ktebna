@@ -23,4 +23,10 @@ export class AuteurService {
   getAuthor(): Observable<Author[]> {
     return this.http.get<Author[]>('http://backend.ktebna.tn/author/get');
   }
+  deleteAuthor(id: any): Observable<any> {
+    return this.http.delete(`http://backend.ktebna.tn/${id}/delete`);
+  }
+  updateAuthor(chambre: any): Observable<any>{
+    return this.http.put(`http://backend.ktebna.tn/update/${chambre.id}`, chambre);
+  }
 }

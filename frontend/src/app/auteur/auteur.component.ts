@@ -21,9 +21,18 @@ export class AuteurComponent implements OnInit {
       console.log(error);
     });
   }
+  deleteAuthor(id: any): void {
+    this.authorService.deleteAuthor(id).subscribe(data => {
+      this.getAll();
+    });
+  }
   ngOnInit(): void {
     this.author = new Author();
     this.getAll();
+  }
+  updateAuthor(author: any): void {
+    this.authorService.updateAuthor(this.author).subscribe(data => {
+    });
   }
 
 }

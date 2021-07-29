@@ -83,7 +83,7 @@ class AuthorController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete", name="api_delete", methods={"delete"})
+     * @Route("/{id}/delete", name="delete", methods={"delete"})
      * @return Response
      *
      */
