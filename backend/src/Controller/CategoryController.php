@@ -38,14 +38,7 @@ class CategoryController extends AbstractController
         $encoders = array(new JsonEncoder());
         $serializer = new Serializer([new ObjectNormalizer()], $encoders);
         $data = $serializer->serialize($list, 'json');
-        $response = new Response($data, 200);
-        //content type
-        $response->headers->set('Content-Type', 'application/json');
-        //Allow all websites
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-        // You can set the allowed methods too, if you want
-        $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
-        return $response;
+        return new Response($data, 200);
     }
 
     /**
@@ -61,12 +54,7 @@ class CategoryController extends AbstractController
         $em= $this->getDoctrine()->getManager();
         $em->persist($p);
         $em->flush();
-        $response = new Response('', Response::HTTP_CREATED);
-        //Allow all websites
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-        // You can set the allowed methods too, if you want
-        $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
-        return $response;
+        return new Response('', Response::HTTP_CREATED);
     }
 
 
