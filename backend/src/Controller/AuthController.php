@@ -6,6 +6,7 @@ use App\Entity\User;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -22,6 +23,10 @@ class AuthController extends ApiController
             return $this->respondValidationError("Invalid Username or Password or Email");
         }
         $user = new User();
+        $user->setName($email);
+        $user->setIsAdmin(false);
+        $user->setPhone(0);
+        $user->setPoints(0);
         $user->setEmail($email);
         $user->setPassword($encoder->encodePassword($user, $password));
         $em->persist($user);
