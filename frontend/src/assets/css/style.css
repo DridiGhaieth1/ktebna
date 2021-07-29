@@ -1,5 +1,5 @@
 /******************************************************************
-  
+
 ******************************************************************/
 
 /*------------------------------------------------------------------
@@ -611,7 +611,7 @@ ol {
 .trend__item__text .rating i {
 	font-size: 10px;
 	color: #e3c01c;
-	
+
 }
 
 .trend__item__text .rating i:last-child {
@@ -1281,7 +1281,7 @@ ol {
 .product__item__text .rating i {
 	font-size: 10px;
 	color: #e3c01c;
-	
+
 }
 
 .product__item__text .rating i:last-child {
@@ -3180,6 +3180,16 @@ ol {
 	.nav::after {
 		width: 240px;
 	}
+}
+
+.header__right__auth {
+  float: right !important;
+  width: 135px !important;
+}
+.header__right__auth a {
+  display: inline !important;
+  padding: 0 !important;
+  margin: 5px !important;
 }
 
 /* Tablet Device = 768px */
