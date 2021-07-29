@@ -16,6 +16,8 @@ const apiUrl = 'http://localhost:3000/';
 const casesApiUrl = apiUrl + 'cases';
 const statisticsApiUrl = apiUrl + 'statistics';
 
+const AUTH_API = 'http://backend.ktebna.tn/api/';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -58,6 +60,23 @@ export class ApiService {
     const url = `${casesApiUrl}/${id}`;
     return this.http.get<Cases>(url).pipe(
       tap(_ => console.log(`fetched cases id=${id}`)),
+      catchError(this.handleError<Cases>())
+    );
+  }
+
+  getProfileById(id: string): Observable<Cases> {
+    const url = `${AUTH_API}users/${id}`;
+    return this.http.get<Cases>(url).pipe(
+      tap(_ => console.log(`fetched`)),
+      catchError(this.handleError<Cases>())
+    );
+  }
+
+
+  getProfile(): Observable<Cases> {
+    const url = `${AUTH_API}users/token`;
+    return this.http.get<Cases>(url).pipe(
+      tap(_ => console.log(`fetched`)),
       catchError(this.handleError<Cases>())
     );
   }

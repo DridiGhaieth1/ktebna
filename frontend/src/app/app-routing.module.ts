@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CasesComponent} from './cases/cases.component';
-import {CasesDetailsComponent} from './cases-details/cases-details.component';
+import {ProfileDetailsComponent} from './profile-details/profile-details.component';
 import {AddCasesComponent} from './add-cases/add-cases.component';
 import {EditCasesComponent} from './edit-cases/edit-cases.component';
 import {CasesStatComponent} from './cases-stat/cases-stat.component';
@@ -28,9 +28,9 @@ const routes: Routes = [
   },
   // todo: (routing) Vous devez exploiter au moins une route paramétrée
   {
-    path: 'cases-details/:id',
-    component: CasesDetailsComponent,
-    data: {title: 'Cases Details'}
+    path: 'profile-details/:id',
+    component: ProfileDetailsComponent,
+    data: {title: 'Profile Details'}
   },
   {
     path: 'add-cases',

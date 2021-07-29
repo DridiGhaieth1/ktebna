@@ -1,0 +1,27 @@
+<div class="profile-container mat-elevation-z8">
+  <div *ngIf="isLoadingResults"
+       class="profile-loading-shade">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <mat-card class="profile-card">
+    <mat-card-content>
+      <dl>
+        <dt>Name:</dt>
+        <dd>{{user.name}}</dd>
+        <dt>Email:</dt>
+        <dd>{{user.email}}</dd>
+        <dt>Phone:</dt>
+        <dd>{{user.phone}}</dd>
+        <dt>Points:</dt>
+        <dd>{{user.points}}</dd>
+        <dt>Roles:</dt>
+        <dd>{{user.roles}}</dd>
+      </dl>
+    </mat-card-content>
+    <mat-card-actions>
+      <a [routerLink]="['/edit-profile', user.id]" color="primary" mat-flat-button>
+        <mat-icon>edit</mat-icon>
+        Edit</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
