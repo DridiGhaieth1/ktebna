@@ -30,5 +30,9 @@ export class AuteurComponent implements OnInit {
     this.author = new Author();
     this.getAll();
   }
+  updateAuthor(author: any): void {
+    this.authorService.updateAuthor(this.author).subscribe(data => {
+    });
+  }
 
 }
