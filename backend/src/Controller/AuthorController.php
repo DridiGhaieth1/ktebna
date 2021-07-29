@@ -34,7 +34,7 @@ class AuthorController extends AbstractController
     }
 
     /**
-     * @Route("/add", name="add" methods={"post"})
+     * @Route("/add", name="add", methods={"post"})
      * @return Response
      */
     public function addAuthor(Request $request)
