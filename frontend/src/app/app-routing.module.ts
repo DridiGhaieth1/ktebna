@@ -12,10 +12,10 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
-import {AuteurComponent} from "./auteur/auteur.component";
-import {ShowAuteurComponent} from "./show-auteur/show-auteur.component";
-import {EditAuteurComponent} from "./edit-auteur/edit-auteur.component";
-import {AddAuteurComponent} from "./add-auteur/add-auteur.component";
+import {AuteurComponent} from './auteur/auteur.component';
+import {ShowAuteurComponent} from './show-auteur/show-auteur.component';
+import {EditAuteurComponent} from './edit-auteur/edit-auteur.component';
+import {AddAuteurComponent} from './add-auteur/add-auteur.component';
 
 
 // todo: (routing) Configurez les routes et liens nécessaires à votre application
@@ -77,5 +77,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
+
+export class AppRouting {
 }
+

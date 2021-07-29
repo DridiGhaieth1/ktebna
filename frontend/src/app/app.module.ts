@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
+import {AppRouting} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CasesComponent} from './cases/cases.component';
 
@@ -72,7 +72,7 @@ import { EditAuteurComponent } from './edit-auteur/edit-auteur.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule,
+    AppRouting,
     BrowserAnimationsModule,
     MatInputModule,
     MatPaginatorModule,
