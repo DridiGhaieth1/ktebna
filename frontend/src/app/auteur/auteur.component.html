@@ -19,9 +19,9 @@
 
             <a class="alarme_clock btn btn-yahoo btn-sm pull-right mr-1" data-action="expand" title="Passer en Plein Ecran"><i class="ft-maximize" style="color:white;"></i></a>
 
-            <a class="btn btn-primary btn-sm pull-right mr-1" routerLink="/abonnement/add"><i
+            <a class="btn btn-primary btn-sm pull-right mr-1" routerLink="/auteur/add"><i
               class="fa fa-plus mr-0"></i>
-              nouvel enregistrement
+              New
             </a>
 
           </div>
@@ -53,9 +53,9 @@
                   <td>{{c.country}}</td>
 
                   <td>
-                    <a class="btn btn-primary"  style="margin-right: 10px;"  >show</a>
-                    <a class="btn btn-success" style="margin-right: 10px;"  >edit</a>
-                    <a class="btn btn-danger" >delete</a>
+
+                    <a class="btn btn-success" style="margin-right: 10px; color: white;">edit</a>
+                    <a class="btn btn-danger" style="margin-right: 10px; color: white;" (click)="deleteAuthor(c.id)" >delete</a>
                   </td>
                 </tr>
               </ng-container>
