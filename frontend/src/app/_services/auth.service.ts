@@ -22,8 +22,10 @@ export class AuthService {
     }, httpOptions);
   }
 
-  getUser(id: number): Observable<any> {
-    return this.http.get(AUTH_API + 'user/' + id);
+  getUser(token: string | null): Observable<any> {
+    return this.http.get(AUTH_API + 'users/token', {
+      headers: new HttpHeaders({'Content-Type': 'application/json', Authorization: 'Bearer ' + token})
+    });
   }
 
   register(username: string, email: string, password: string): Observable<any> {
