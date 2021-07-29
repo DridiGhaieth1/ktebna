@@ -39,6 +39,11 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { AuteurComponent } from './auteur/auteur.component';
+import { ShowAuteurComponent } from './show-auteur/show-auteur.component';
+import { AddAuteurComponent } from './add-auteur/add-auteur.component';
+import { EditAuteurComponent } from './edit-auteur/edit-auteur.component';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +60,11 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     HomeComponent,
     ProfileComponent,
     BoardAdminComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    AuteurComponent,
+    ShowAuteurComponent,
+    AddAuteurComponent,
+    EditAuteurComponent
   ],
   imports: [
     BrowserModule,

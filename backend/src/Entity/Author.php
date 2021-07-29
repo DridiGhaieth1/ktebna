@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Author
  *
  * @ORM\Table(name="author", indexes={@ORM\Index(name="id", columns={"id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\AuthorRepository")
  */
 class Author
 {
@@ -48,6 +48,59 @@ class Author
      * @ORM\Column(name="country", type="string", length=30, nullable=true)
      */
     private $country;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPoints(): ?float
+    {
+        return $this->points;
+    }
+
+    public function setPoints(float $points): self
+    {
+        $this->points = $points;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
 
 
 }
