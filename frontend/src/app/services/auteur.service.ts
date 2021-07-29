@@ -26,4 +26,7 @@ export class AuteurService {
   deleteAuthor(id: any): Observable<any> {
     return this.http.delete(`http://backend.ktebna.tn/${id}/delete`);
   }
+  updateAuthor(chambre: any): Observable<any>{
+    return this.http.put(`http://backend.ktebna.tn/update/${chambre.id}`, chambre);
+  }
 }
