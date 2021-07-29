@@ -1,0 +1,7 @@
+{
+  "/api/": {
+    "target": "http://ktebna_nginx",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
