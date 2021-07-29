@@ -26,7 +26,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {ProfileDetailsComponent} from './profile-details/profile-details.component';
 import {AddCasesComponent} from './add-cases/add-cases.component';
-import {EditCasesComponent} from './edit-cases/edit-cases.component';
+import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {CasesStatComponent} from './cases-stat/cases-stat.component';
 import {ChartsModule} from 'ng2-charts';
 import {CasesListComponent} from './cases-list/cases-list.component';
@@ -51,7 +51,7 @@ import { EditAuteurComponent } from './edit-auteur/edit-auteur.component';
     CasesComponent,
     ProfileDetailsComponent,
     AddCasesComponent,
-    EditCasesComponent,
+    EditProfileComponent,
     CasesStatComponent,
     CasesListComponent,
     CasesListElementComponent,

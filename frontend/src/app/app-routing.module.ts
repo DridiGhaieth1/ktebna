@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CasesComponent} from './cases/cases.component';
 import {ProfileDetailsComponent} from './profile-details/profile-details.component';
 import {AddCasesComponent} from './add-cases/add-cases.component';
-import {EditCasesComponent} from './edit-cases/edit-cases.component';
+import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {CasesStatComponent} from './cases-stat/cases-stat.component';
 import {CasesListComponent} from './cases-list/cases-list.component';
 import { RegisterComponent } from './register/register.component';
@@ -38,9 +38,9 @@ const routes: Routes = [
     data: {title: 'Add Cases'}
   },
   {
-    path: 'edit-cases/:id',
-    component: EditCasesComponent,
-    data: {title: 'Edit Cases'}
+    path: 'edit-profile/:id',
+    component: EditProfileComponent,
+    data: {title: 'Edit Profile'}
   },
   {
     path: 'cases-stat',

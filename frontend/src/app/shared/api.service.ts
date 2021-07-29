@@ -7,6 +7,7 @@ import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {Cases} from '../model/cases';
 import {Statistic} from '../model/statistic';
+import {User} from "../model/user";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -78,6 +79,14 @@ export class ApiService {
     return this.http.get<Cases>(url).pipe(
       tap(_ => console.log(`fetched`)),
       catchError(this.handleError<Cases>())
+    );
+  }
+
+  updateProfile(user: User): Observable<any> {
+    const url = `${AUTH_API}users/token`;
+    return this.http.put(url, user, httpOptions).pipe(
+      tap(_ => console.log(`updated`)),
+      catchError(this.handleError<any>())
     );
   }
 

@@ -1,0 +1,45 @@
+<div class="profile-container mat-elevation-z8">
+  <div *ngIf="isLoadingResults"
+       class="profile-loading-shade">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <mat-card class="profile-card">
+    <form (ngSubmit)="onFormSubmit()" [formGroup]="profileForm">
+      <mat-form-field class="profile-full-width">
+        <label>
+          <mat-label>Name</mat-label>
+          <input [errorStateMatcher]="matcher" formControlName="name" matInput
+                 placeholder="Name">
+        </label>
+        <mat-error>
+          <span *ngIf="!profileForm.get('name')?.valid && profileForm.get('name')?.touched">Please enter Name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="profile-full-width">
+        <label>
+          <mat-label>Email</mat-label>
+          <input [errorStateMatcher]="matcher" formControlName="email" matInput
+                 placeholder="Email">
+        </label>
+        <mat-error>
+          <span *ngIf="!profileForm.get('email')?.valid && profileForm.get('email')?.touched">Please enter Email</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="profile-full-width">
+        <label>
+          <mat-label>Phone</mat-label>
+          <input [errorStateMatcher]="matcher" formControlName="phone" matInput placeholder="Phone"
+                 type="number">
+        </label>
+        <mat-error>
+          <span *ngIf="!profileForm.get('phone')?.valid && profileForm.get('phone')?.touched">Please enter Phone</span>
+        </mat-error>
+      </mat-form-field>
+      <div class="button-row">
+        <button [disabled]="!profileForm?.valid" color="primary" mat-flat-button type="submit">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
