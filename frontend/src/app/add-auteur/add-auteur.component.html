@@ -14,7 +14,7 @@
 
       <div class="card-body">
 
-        <form>
+        <form #f="ngForm">
 
 
             <div class="table-responsive">
@@ -27,26 +27,35 @@
                 <tr>
                   <th>name</th>
                 </tr>
-                <td><input type="text" class="form-control" [(ngModel)]="author.name" name="author.name"    >
+                <td><input type="text" class="form-control" ngModel required #m="ngModel" [(ngModel)]="author.name" name="author.name"    >
+                  <div class="alert alert-danger" *ngIf="m.invalid && m.touched">
+                     name is required</div>
                 </td>
                 <tr>
                   <th>points</th>
                 </tr>
-                <td><input type="text" class="form-control" [(ngModel)]="author.points" name="author.points" >
+                <td><input type="text" class="form-control" ngModel required #p="ngModel" [(ngModel)]="author.points" name="author.points" pattern="[1-9][0-9]{0,2}" >
+                  <div class="alert alert-danger" *ngIf="p.invalid && p.touched">
+                    points is required</div>
                 </td>
                 <tr>
                   <th>country</th>
                 </tr>
-                <td><input type="text" class="form-control" [(ngModel)]="author.country" name="author.country"  >
+                <td><input type="text" class="form-control" ngModel required #c="ngModel" [(ngModel)]="author.country" name="author.country"  >
+                  <div class="alert alert-danger" *ngIf="p.invalid && p.touched">
+                    country is required</div>
                 </td>
                 <tr>
                   <th>picture</th>
                 </tr>
-                <td><input type="text" class="form-control" [(ngModel)]="author.picture" name="author.picture" >
+                <td><input type="text" class="form-control" ngModel required #pic="ngModel" [(ngModel)]="author.picture" name="author.picture" >
+                  <div class="alert alert-danger" *ngIf="pic.invalid && pic.touched">
+                    picture is required</div>
+
                 </td>
 
               </table>
-              <input  class="btn btn-primary btn-group-lg pull-right"
+              <input [disabled]="f.invalid" class="btn btn-primary btn-group-lg pull-right"
                       (click)="save()" value="Enregistrer" />
             </div>
         </form>
