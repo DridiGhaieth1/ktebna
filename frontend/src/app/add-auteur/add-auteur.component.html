@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header" style="background-color: #00B5B8 !important;margin-bottom: 35px;">
+        <div class="row">
+          <div class="col-6">
+            <h4 style="font-size: 20px; color: white;">
+              Add Author
+            </h4>
+          </div>
+        </div>
+      </div>
+      <HR>
+
+      <div class="card-body">
+
+        <form>
+
+
+            <div class="table-responsive">
+              <table class="table table-bordered" id="item_table">
+                <tr>
+                  <th>Id</th>
+                </tr>
+                <td><input type="text" class="form-control">
+                </td>
+                <tr>
+                  <th>name</th>
+                </tr>
+                <td><input type="text" class="form-control" [(ngModel)]="author.name" name="author.name"    >
+                </td>
+                <tr>
+                  <th>points</th>
+                </tr>
+                <td><input type="text" class="form-control" [(ngModel)]="author.points" name="author.points" >
+                </td>
+                <tr>
+                  <th>country</th>
+                </tr>
+                <td><input type="text" class="form-control" [(ngModel)]="author.country" name="author.country"  >
+                </td>
+                <tr>
+                  <th>picture</th>
+                </tr>
+                <td><input type="text" class="form-control" [(ngModel)]="author.picture" name="author.picture" >
+                </td>
+
+              </table>
+              <input  class="btn btn-primary btn-group-lg pull-right"
+                      (click)="save()" value="Enregistrer" />
+            </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>

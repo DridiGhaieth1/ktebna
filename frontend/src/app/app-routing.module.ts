@@ -12,6 +12,11 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
+import {AuteurComponent} from "./auteur/auteur.component";
+import {ShowAuteurComponent} from "./show-auteur/show-auteur.component";
+import {EditAuteurComponent} from "./edit-auteur/edit-auteur.component";
+import {AddAuteurComponent} from "./add-auteur/add-auteur.component";
+
 
 // todo: (routing) Configurez les routes et liens nécessaires à votre application
 const routes: Routes = [
@@ -47,6 +52,18 @@ const routes: Routes = [
     component: CasesListComponent,
     data: {title: 'Cases List'}
   },
+  {
+  path: 'auteur',
+  component: AuteurComponent },
+  {
+    path: 'auteur/show',
+    component: ShowAuteurComponent },
+  {
+    path: 'auteur/edit',
+    component: EditAuteurComponent },
+  {
+    path: 'auteur/add',
+    component: AddAuteurComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
