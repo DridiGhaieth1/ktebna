@@ -43,6 +43,7 @@ import { AuteurComponent } from './auteur/auteur.component';
 import { ShowAuteurComponent } from './show-auteur/show-auteur.component';
 import { AddAuteurComponent } from './add-auteur/add-auteur.component';
 import { EditAuteurComponent } from './edit-auteur/edit-auteur.component';
+import {BookModule} from "./book/book.module";
 
 
 @NgModule({
@@ -66,32 +67,33 @@ import { EditAuteurComponent } from './edit-auteur/edit-auteur.component';
     AddAuteurComponent,
     EditAuteurComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AppRouting,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatSortModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatButtonToggleModule,
-    MatSelectModule,
-    MatSelectModule,
-    MatMenuModule,
-    MatToolbarModule,
-    ChartsModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AppRouting,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatPaginatorModule,
+        MatProgressSpinnerModule,
+        MatSortModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatSliderModule,
+        MatSlideToggleModule,
+        MatButtonToggleModule,
+        MatSelectModule,
+        MatSelectModule,
+        MatMenuModule,
+        MatToolbarModule,
+        ChartsModule,
+        BookModule
+    ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

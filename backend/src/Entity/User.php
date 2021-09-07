@@ -8,9 +8,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
+ * User
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ApiResource(formats={"json"})
+ * @ORM\Table(name="user")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -376,5 +380,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

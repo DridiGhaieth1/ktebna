@@ -16,6 +16,10 @@ import {AuteurComponent} from './auteur/auteur.component';
 import {ShowAuteurComponent} from './show-auteur/show-auteur.component';
 import {EditAuteurComponent} from './edit-auteur/edit-auteur.component';
 import {AddAuteurComponent} from './add-auteur/add-auteur.component';
+import {DetailsComponent} from './book/details/details.component';
+import {CreateComponent} from './book/create/create.component';
+import {UpdateComponent} from './book/update/update.component';
+import {BookHomeComponent} from './book/book-home/book-home.component';
 
 
 // todo: (routing) Configurez les routes et liens nécessaires à votre application
@@ -70,7 +74,12 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'admin', component: BoardAdminComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'book', redirectTo: 'book/home', pathMatch: 'full'},
+  { path: 'book/home', component: BookHomeComponent },
+  { path: 'book/details/:bookId', component: DetailsComponent },
+  { path: 'book/create', component: CreateComponent },
+  { path: 'book/update/:bookId', component: UpdateComponent }
 ];
 
 @NgModule({

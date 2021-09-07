@@ -34,7 +34,7 @@
                 <tr>
                   <th>points</th>
                 </tr>
-                <td><input type="text" class="form-control" ngModel required #p="ngModel" [(ngModel)]="author.points" name="author.points" pattern="[1-9][0-9]{0,2}" >
+                <td><input type="number" class="form-control" ngModel required #p="ngModel" [(ngModel)]="author.points" name="author.points" pattern="[1-9][0-9]{0,2}" >
                   <div class="alert alert-danger" *ngIf="p.invalid && p.touched">
                     points is required</div>
                 </td>
