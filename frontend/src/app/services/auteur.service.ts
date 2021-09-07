@@ -18,13 +18,16 @@ export class AuteurService {
 
 
   postAuthor(c: Author): Observable<any>{
-    return this.http.post<Author>(this.url, c);
+    const headers = { 'content-type': 'application/json'};
+    const body = JSON.stringify(c);
+    console.log(JSON.stringify(c));
+    return this.http.post<Author>('http://backend.ktebna.tn/api/authors', body,{'headers' : headers});
   }
   getAuthor(): Observable<Author[]> {
-    return this.http.get<Author[]>('http://backend.ktebna.tn/author/get');
+    return this.http.get<Author[]>('http://backend.ktebna.tn/api/authors');
   }
   deleteAuthor(id: any): Observable<any> {
-    return this.http.delete(`http://backend.ktebna.tn/${id}/delete`);
+    return this.http.delete(`http://backend.ktebna.tn/author/${id}/delete`);
   }
   updateAuthor(chambre: any): Observable<any>{
     return this.http.put(`http://backend.ktebna.tn/update/${chambre.id}`, chambre);

@@ -5,10 +5,11 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Ebook
- *
+ * @ApiResource(formats={"json"})
  * @ORM\Table(name="ebook", indexes={@ORM\Index(name="id_author", columns={"id_author"})})
  * @ORM\Entity
  */
