@@ -6,11 +6,14 @@
       <p class="card-text">{{book.description}}</p>
     </div>
     <div class="card-footer">
-      <small class="text-muted">Auteur: {{book.idAuthor}} </small>
+      <small class="text-muted">Auteur: {{book.idAuthor.name}} </small>
       <a href="#" class="btn btn-primary">Reserver</a>
     </div>
+    <script>
+      console.log(book.idAuthor.name);
+    </script>
+
   </div>
 
 </div>
-
 
