@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use App\Repository\OwnersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+
 
 /**
+ * Owners
+ * @ApiResource(formats={"json"})
  * @ORM\Entity(repositoryClass=OwnersRepository::class)
+ * @ORM\Table(name="`owners`")
  */
 class Owners
 {

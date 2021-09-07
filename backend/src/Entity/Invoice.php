@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\InvoiceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
+ * Invoice
+ * @ApiResource(formats={"json"})
  * @ORM\Entity(repositoryClass=InvoiceRepository::class)
+ * @ORM\Table(name="`invoice`")
  */
 class Invoice
 {

@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use App\Repository\AddersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+
 
 /**
+ * Adders
+ * @ApiResource(formats={"json"})
  * @ORM\Entity(repositoryClass=AddersRepository::class)
+ * @ORM\Table(name="`adders`")
  */
 class Adders
 {

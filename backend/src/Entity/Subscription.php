@@ -6,10 +6,11 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Subscription
- *
+ * @ApiResource(formats={"json"})
  * @ORM\Table(name="subscription", indexes={@ORM\Index(name="id_user", columns={"id_user"})})
  * @ORM\Entity
  */
@@ -126,4 +127,115 @@ class Subscription
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getStart(): DateTime
+    {
+        return $this->start;
+    }
+
+    /**
+     * @param DateTime $start
+     */
+    public function setStart(DateTime $start): void
+    {
+        $this->start = $start;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMonths(): int
+    {
+        return $this->months;
+    }
+
+    /**
+     * @param int $months
+     */
+    public function setMonths(int $months): void
+    {
+        $this->months = $months;
+    }
+
+    /**
+     * @return float
+     */
+    public function getAmount(): float
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param float $amount
+     */
+    public function setAmount(float $amount): void
+    {
+        $this->amount = $amount;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTransaction(): string
+    {
+        return $this->transaction;
+    }
+
+    /**
+     * @param string $transaction
+     */
+    public function setTransaction(string $transaction): void
+    {
+        $this->transaction = $transaction;
+    }
+
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * @param User $idUser
+     */
+    public function setIdUser(User $idUser): void
+    {
+        $this->idUser = $idUser;
+    }
+
 }
