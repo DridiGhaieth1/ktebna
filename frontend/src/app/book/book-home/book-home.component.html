@@ -1,5 +1,41 @@
+<div class="col-12">
+  <div class="card" style="background-color: #00B5B8 !important;margin-bottom: 35px;"><div class="col-12">
+    <div class="form-group" style="margin:10px;">
+      <input class="form-control" type="text" [(ngModel)]="term" placeholder="Search">
+    </div></div>
+  </div>
+  <div class="card">
+    <div class="card-header" style="background-color: #00B5B8 !important;margin-bottom: 35px;">
+      <div class="row">
+        <div class="col-6">
+          <h4>
+            Books
+
+            <span class="badge badge badge-info badge-pill mr-2"></span></h4>
+        </div>
+        <div class="col-6">
+          <a class="btn btn-warning btn-sm pull-right"     style="margin-left: -9px;" title="Actualiser"><i class="fa fa-refresh"></i></a>
+
+          <a class="alarme_clock btn btn-yahoo btn-sm pull-right mr-1" data-action="expand" title="Passer en Plein Ecran"><i class="ft-maximize" style="color:white;"></i></a>
+
+          <a class="btn btn-primary btn-sm pull-right mr-1" routerLink="/book/create"><i
+            class="fa fa-plus mr-0"></i>
+            New
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+    <HR>
+    <div class="card-body">
+    </div>
+
+  </div>
+</div>
+
 <div class="card-deck">
-  <div class="card" *ngFor="let book of listBook">
+  <div class="card" *ngFor="let book of listBook |filter:term">
     <img class="card-img-top" src="{{book.photo}}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{book.title}}</h5>
@@ -10,7 +46,6 @@
       <a href="#" class="btn btn-primary">Reserver</a>
     </div>
   </div>
-
 </div>
 
 

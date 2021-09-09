@@ -9,7 +9,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Book
- * @ApiResource(formats={"json"})
+ * @ApiResource(formats={"json"}), normalizationContext={ "groups": {"books"} })
  * @ORM\Table(name="book", indexes={@ORM\Index(name="id_author", columns={"id_author"})})
  * @ORM\Entity
  */

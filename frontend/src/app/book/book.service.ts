@@ -30,4 +30,11 @@ export class BookService {
   update(book: any): Observable<any>{
     return this.http.put(`http://backend.ktebna.tn/api/books/${book.id}`, book);
   }
+
+  getById(id: any): Observable<Book> {
+    return this.http.get<Book>('http://backend.ktebna.tn/api/books/' + id);
+  }
+  getAuthors(): Observable<Author[]> {
+    return this.http.get<Author[]>('http://backend.ktebna.tn/api/autors');
+  }
 }

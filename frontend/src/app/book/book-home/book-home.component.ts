@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Book} from '../book';
 import {BookService} from '../book.service';
+import {AuteurService} from '../../services/auteur.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ export class BookHomeComponent implements OnInit {
 
   listBook!: Book[];
   book!: Book;
-  constructor(public bookService: BookService) {
+  term = '';
+  constructor(public bookService: BookService, public authorService: AuteurService) {
   }
 
   getAll(): void {
@@ -22,6 +24,7 @@ export class BookHomeComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+
   }
   delete(id: any): void {
     this.bookService.delete(id).subscribe(data => {

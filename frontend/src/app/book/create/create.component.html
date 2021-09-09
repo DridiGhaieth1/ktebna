@@ -1,1 +1,99 @@
-<p>create works!</p>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header" style="background-color: #00B5B8 !important;margin-bottom: 35px;">
+        <div class="row">
+          <div class="col-6">
+            <h4 style="font-size: 20px; color: white;">
+              Add Book
+            </h4>
+          </div>
+        </div>
+      </div>
+      <HR>
+      <div class="card-body">
+        <form #f="ngForm">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="item_table">
+
+              <tr>
+                <th>title</th>
+              </tr>
+              <td><input type="text" class="form-control" ngModel required #m="ngModel" [(ngModel)]="book.title" name="book.title"    >
+                <div class="alert alert-danger" *ngIf="m.invalid && m.touched">
+                  title is required</div>
+              </td>
+
+              <tr>
+                <th>Description</th>
+              </tr>
+              <td><input type="text" class="form-control" ngModel required #md="ngModel" [(ngModel)]="book.description" name="book.description"    >
+                <div class="alert alert-danger" *ngIf="md.invalid && md.touched">
+                  description is required</div>
+              </td>
+
+              <tr>
+                <th>Author</th>
+              </tr>
+              <select  name="idAuthor" class="col-md-6 form-control" (click)="onChange($event)" [(ngModel)]="book.idAuthor"  >
+                <option>Select</option>
+
+                <option class="form-control" name="sss"  *ngFor="let c of listAuthor"   value={{c.id}}  >{{c.name}} id :{{c.id}} </option>
+
+              </select>
+
+              <tr>
+                <th>year</th>
+              </tr>
+              <td><input type="number" class="form-control" ngModel required #p="ngModel" [(ngModel)]="book.year" name="book.year" pattern="[1-9][0-9]{0,3}" >
+                <div class="alert alert-danger" *ngIf="p.invalid && p.touched">
+                  year is required</div>
+              </td>
+              <tr>
+                <th>photo</th>
+              </tr>
+              <td><input type="text" class="form-control" ngModel required #c="ngModel" [(ngModel)]="book.photo" name="book.photo"  >
+                <div class="alert alert-danger" *ngIf="c.invalid && c.touched">
+                  photo is required</div>
+              </td>
+              <tr>
+                <th>cover</th>
+              </tr>
+              <td><input type="text" class="form-control" ngModel required #cp="ngModel" [(ngModel)]="book.cover" name="book.cover"  >
+                <div class="alert alert-danger" *ngIf="cp.invalid && cp.touched">
+                  cover is required</div>
+              </td>
+              <tr>
+                <th>language</th>
+              </tr>
+              <td><input type="text" class="form-control" ngModel required #pic="ngModel" [(ngModel)]="book.language" name="book.language" >
+                <div class="alert alert-danger" *ngIf="pic.invalid && pic.touched">
+                  language is required</div>
+              </td>
+
+              <tr>
+                <th>price</th>
+              </tr>
+              <td><input type="number" class="form-control" ngModel required #pfr="ngModel" [(ngModel)]="book.price" name="book.price" pattern="[1-9][0-9]{0,2}" >
+                <div class="alert alert-danger" *ngIf="pfr.invalid && pfr.touched">
+                  price is required</div>
+              </td>
+
+              <tr>
+                <th>value</th>
+              </tr>
+              <td><input type="number" class="form-control" ngModel [(ngModel)]="book.value" name="book.value"  >
+
+              </td>
+
+            </table>
+            <input [disabled]="f.invalid" class="btn btn-primary btn-group-lg pull-right"
+                   (click)="save()" value="Enregistrer" />
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>

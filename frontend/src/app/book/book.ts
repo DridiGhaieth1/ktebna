@@ -1,4 +1,4 @@
-export interface Book {
+export class Book {
   id: any;
   title: any;
   description: any;

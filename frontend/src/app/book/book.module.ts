@@ -8,7 +8,7 @@ import { DetailsComponent } from './details/details.component';
 import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
 import { BookHomeComponent } from './book-home/book-home.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { BookHomeComponent } from './book-home/book-home.component';
     CommonModule,
     BookRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
   ]
 })
 export class BookModule { }

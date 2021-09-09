@@ -10,6 +10,8 @@ import {AuteurService} from '../services/auteur.service';
 export class AuteurComponent implements OnInit {
   listAuthor!: Author[];
   author!: Author;
+  author1!: Author;
+  term = '';
   constructor(private authorService: AuteurService) {
   }
 
@@ -28,6 +30,7 @@ export class AuteurComponent implements OnInit {
   }
   ngOnInit(): void {
     this.author = new Author();
+    this.author1 = new Author();
     this.getAll();
   }
   updateAuthor(author: any): void {
@@ -35,4 +38,30 @@ export class AuteurComponent implements OnInit {
     });
   }
 
+  getByid(author: any): void {
+    this.author1 = Object.create(author);
+
+  }
+
+  saveUpdate(): void {
+    this.authorService.updateAuthor(this.author1).subscribe(data => {
+      this.listAuthor[this.findIndexById(this.author1.id)] = this.author1;
+      console.log('data', data);
+      this.listAuthor.push(data);
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  findIndexById(id: string): number {
+    let index = -1;
+    for (let i = 0; i < this.listAuthor.length; i++) {
+      if (this.listAuthor[i].id === id) {
+        index = i;
+        break;
+      }
+    }
+
+    return index;
+  }
 }
