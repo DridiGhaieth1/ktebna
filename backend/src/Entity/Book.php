@@ -6,10 +6,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * Book
- * @ApiResource(formats={"json"}), normalizationContext={ "groups": {"books"} })
+ * @ApiResource(formats={"json"}, normalizationContext={ "groups": {"books"} })
  * @ORM\Table(name="book", indexes={@ORM\Index(name="id_author", columns={"id_author"})})
  * @ORM\Entity
  */
@@ -21,6 +23,7 @@ class Book
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups({"books"})
      */
     private $id;
 
@@ -28,6 +31,7 @@ class Book
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=30, nullable=false)
+     * @Groups({"books"})
      */
     private $title;
 
@@ -35,6 +39,7 @@ class Book
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=30, nullable=false)
+     * @Groups({"books"})
      */
     private $description;
 
@@ -42,6 +47,7 @@ class Book
      * @var int
      *
      * @ORM\Column(name="year", type="integer", nullable=false)
+     * @Groups({"books"})
      */
     private $year;
 
@@ -49,6 +55,7 @@ class Book
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=30, nullable=false)
+     * @Groups({"books"})
      */
     private $photo;
 
@@ -56,6 +63,7 @@ class Book
      * @var string
      *
      * @ORM\Column(name="cover", type="string", length=30, nullable=false)
+     * @Groups({"books"})
      */
     private $cover;
 
@@ -63,6 +71,7 @@ class Book
      * @var string
      *
      * @ORM\Column(name="language", type="string", length=30, nullable=false)
+     * @Groups({"books"})
      */
     private $language;
 
@@ -70,6 +79,7 @@ class Book
      * @var float
      *
      * @ORM\Column(name="price", type="float", precision=10, scale=0, nullable=false)
+     * @Groups({"books"})
      */
     private $price;
 
@@ -77,36 +87,42 @@ class Book
      * @var float
      *
      * @ORM\Column(name="value", type="float", precision=10, scale=0, nullable=false)
+     * @Groups({"books"})
      */
     private $value;
 
     /**
      * @var \Author
      *
-     * @ORM\ManyToOne(targetEntity="Author")
+     * @ORM\ManyToOne(targetEntity="Author", fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_author", referencedColumnName="id")
      * })
+     * @Groups({"books"})
      */
     private $idAuthor;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="books")
+     * @Groups({"books"})
      */
     private $categories;
 
     /**
      * @ORM\OneToMany(targetEntity=Order::class, mappedBy="book")
+     * @Groups({"books"})
      */
     private $orders;
 
     /**
      * @ORM\OneToMany(targetEntity=Adders::class, mappedBy="book")
+     * @Groups({"books"})
      */
     private $adders;
 
     /**
      * @ORM\OneToMany(targetEntity=Owners::class, mappedBy="book")
+     * @Groups({"books"})
      */
     private $owners;
 

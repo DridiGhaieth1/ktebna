@@ -2,7 +2,7 @@
   <div class="col-12">
     <div class="card" style="background-color: #00B5B8 !important;margin-bottom: 35px;"><div class="col-12">
       <div class="form-group" style="margin:10px;">
-        <input class="form-control" type="text" [(ngModel)]="term" placeholder="Search">
+        <input class="form-control" type="text"  placeholder="Search">
       </div></div>
     </div>
     <div class="card">
@@ -45,7 +45,7 @@
                 <th>Actions</th>
               </tr>
               <ng-container>
-                <tr *ngFor="let c of listAuthor |filter:term">
+                <tr *ngFor="let c of listAuthor">
                   <td>{{c.id}}</td>
                   <td>{{c.name}}</td>
                   <td>{{c.points}}</td>
@@ -54,7 +54,7 @@
 
                   <td>
 
-                    <button type="button" class="btn btn-primary" (click)="getByid(c)" data-toggle="modal" data-target="#exampleModal" class="btn btn-success" style="margin-right: 10px; color: white;">edit</button>
+                    <a class="btn btn-success" style="margin-right: 10px; color: white;">edit</a>
                     <a class="btn btn-danger" style="margin-right: 10px; color: white;" (click)="deleteAuthor(c.id)" >delete</a>
                   </td>
                 </tr>
@@ -67,69 +67,3 @@
       </div>
     </div>
   </div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="author1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Author</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form #f="ngForm">
-
-
-          <div class="table-responsive" >
-            <table class="table table-bordered" id="item_table1">
-              <tr>
-                <th>Id</th>
-              </tr>
-              <td><input type="text" class="form-control" [(ngModel)]="author1.id" name="author1.id"  readonly>
-              </td>
-              <tr>
-                <th>name</th>
-              </tr>
-              <td><input type="text" class="form-control"  required #m="ngModel" [(ngModel)]="author1.name" name="author1.name"    >
-                <div class="alert alert-danger" *ngIf="m.invalid && m.touched">
-                  name is required</div>
-              </td>
-              <tr>
-                <th>points</th>
-              </tr>
-              <td><input type="number" class="form-control" ngModel required #p="ngModel" [(ngModel)]="author1.points" name="author1.points" pattern="[1-9][0-9]{0,2}" >
-                <div class="alert alert-danger" *ngIf="p.invalid && p.touched">
-                  points is required</div>
-              </td>
-              <tr>
-                <th>country</th>
-              </tr>
-              <td><input type="text" class="form-control" ngModel required #c="ngModel" [(ngModel)]="author1.country" name="author1.country"  >
-                <div class="alert alert-danger" *ngIf="p.invalid && p.touched">
-                  country is required</div>
-              </td>
-              <tr>
-                <th>picture</th>
-              </tr>
-              <td><input type="text" class="form-control" ngModel required #pic="ngModel" [(ngModel)]="author1.picture" name="author1.picture" >
-                <div class="alert alert-danger" *ngIf="pic.invalid && pic.touched">
-                  picture is required</div>
-
-              </td>
-
-            </table>
-
-          </div>
-        </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" [disabled]="f.invalid" (click)="saveUpdate()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
